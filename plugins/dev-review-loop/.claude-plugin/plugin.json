@@ -1,0 +1,9 @@
+{
+    "name": "dev-review-loop",
+    "description": "병렬 개발 에이전트 3개로 분석/설계 후 구현하고, 코드리뷰→수정→재리뷰 반복 워크플로우를 실행합니다.",
+    "version": "1.0.0",
+    "author": {
+        "name": "recrime",
+        "email": "recrime0330@gmail.com"
+    }
+}

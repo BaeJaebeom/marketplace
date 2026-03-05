@@ -1,0 +1,9 @@
+{
+    "name": "load-session",
+    "description": "이전 세션에서 저장한 작업 내용을 자동으로 불러와 작업을 이어서 진행할 수 있도록 지원",
+    "version": "1.0.0",
+    "author": {
+        "name": "recrime",
+        "email": "recrime0330@gmail.com"
+    }
+}
