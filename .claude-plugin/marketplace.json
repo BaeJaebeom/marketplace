@@ -29,6 +29,13 @@
             "description": "이전 세션에서 저장한 작업 내용을 자동으로 불러와 작업 재개",
             "category": "productivity",
             "tags": ["session", "handoff", "context-load"]
+        },
+        {
+            "name": "setup-branch",
+            "source": "./plugins/setup-branch",
+            "description": "여러 Git 프로젝트에 동시에 브랜치를 생성하고 push하는 워크플로우",
+            "category": "development",
+            "tags": ["git", "branch", "multi-project", "workflow"]
         }
     ]
 }

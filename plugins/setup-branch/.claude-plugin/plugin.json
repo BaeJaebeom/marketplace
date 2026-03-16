@@ -1,0 +1,9 @@
+{
+    "name": "setup-branch",
+    "description": "여러 Git 프로젝트에 동시에 브랜치를 생성하고 push하는 워크플로우",
+    "version": "1.0.0",
+    "author": {
+        "name": "recrime",
+        "email": "recrime0330@gmail.com"
+    }
+}

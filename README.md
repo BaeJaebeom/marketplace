@@ -9,6 +9,7 @@
 | [dev-review-loop](./plugins/dev-review-loop/) | 병렬 에이전트 분석 → 구현 → 코드리뷰 → Playwright 테스트 워크플로우 |
 | [save-session](./plugins/save-session/) | 세션 작업 내용을 MD로 저장하여 다음 세션에서 이어서 작업 |
 | [load-session](./plugins/load-session/) | 이전 세션에서 저장한 작업 내용을 자동으로 불러와 작업 재개 |
+| [setup-branch](./plugins/setup-branch/) | 여러 Git 프로젝트에 동시에 브랜치를 생성하고 origin에 push |
 
 각 플러그인의 상세 설명은 해당 폴더의 README.md를 참고하세요.
 

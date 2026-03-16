@@ -11,7 +11,8 @@ marketplace/
 ├── plugins/
 │   ├── dev-review-loop/      # 병렬 개발 + 코드리뷰 반복 워크플로우
 │   ├── save-session/         # 세션 작업 내용 저장
-│   └── load-session/         # 이전 세션 자동 불러오기
+│   ├── load-session/         # 이전 세션 자동 불러오기
+│   └── setup-branch/         # 멀티 프로젝트 브랜치 생성
 ├── CLAUDE.md
 ├── README.md
 └── LICENSE
@@ -48,6 +49,17 @@ marketplace/
   - `sessions/` 폴더에서 수정시간 기준 최근 파일 자동 선택
   - 세션 파일 읽기 및 맥락 복원
   - 남은 작업 목록과 참고사항 요약 보고
+
+### 4. setup-branch
+- **설명**: 여러 Git 프로젝트에 동시에 브랜치를 생성하고 push하는 워크플로우
+- **타입**: Skill
+- **스킬**: `/setup-branch:setup-branch [브랜치명]`
+- **특징**:
+  - 현재 디렉토리 하위 1계층 Git 프로젝트 자동 탐지 (이름 오름차순 정렬)
+  - 번호 기반 다중 선택 (범위, 콤마, all 지원)
+  - production 브랜치 탐지 우선순위: `production` > `prod` > `main` > `master`
+  - 로컬에 없으면 origin의 default 브랜치를 fallback으로 사용
+  - 새 브랜치 생성 후 origin push
 
 ## 플러그인 개발 가이드
 
