@@ -32,11 +32,7 @@ description: 여러 Git 프로젝트에 동시에 브랜치를 생성하고 push
 
 ```bash
 # 현재 디렉토리의 하위 디렉토리 중 .git이 있는 것만 찾기
-for dir in */; do
-  if [ -d "$dir/.git" ]; then
-    echo "$dir"
-  fi
-done
+for dir in */; do [ -d "$dir/.git" ] && echo "${dir%/}"; done | sort
 ```
 
 - Git 프로젝트가 하나도 없으면 "Git 프로젝트를 찾을 수 없습니다"라고 안내하고 종료
