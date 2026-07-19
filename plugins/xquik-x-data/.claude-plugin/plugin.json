@@ -1,0 +1,22 @@
+{
+    "name": "xquik-x-data",
+    "description": "Xquik REST API 및 원격 MCP로 X 데이터, export, monitor, webhook 작업을 안내합니다.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Xquik",
+        "url": "https://github.com/Xquik-dev"
+    },
+    "homepage": "https://docs.xquik.com",
+    "repository": "https://github.com/Xquik-dev/x-twitter-scraper",
+    "license": "MIT",
+    "skills": "./skills/",
+    "mcpServers": "./.mcp.json",
+    "userConfig": {
+        "api_key": {
+            "type": "string",
+            "title": "Xquik API Key",
+            "description": "dashboard.xquik.com/account에서 발급한 Xquik API 키입니다.",
+            "sensitive": true
+        }
+    }
+}

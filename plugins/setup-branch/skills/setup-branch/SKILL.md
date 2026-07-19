@@ -61,9 +61,19 @@ for dir in */; do [ -d "$dir/.git" ] && echo "${dir%/}"; done | sort
 
 선택한 각 프로젝트에 대해 production 브랜치를 확인한 후 순차적으로 실행한다.
 
-production 브랜치 탐지 (로컬 브랜치에서 찾기):
+production 브랜치 탐지 (로컬 브랜치에서 우선순위대로 찾기):
 ```bash
-cd {project_dir} && git branch | grep -E '^\*?\s*(production|prod|main|master)$' | head -1
+cd {project_dir}
+
+production_branch=""
+for candidate in production prod main master; do
+  if git show-ref --verify --quiet "refs/heads/$candidate"; then
+    production_branch="$candidate"
+    break
+  fi
+done
+
+printf '%s\n' "$production_branch"
 ```
 
 production 브랜치 탐지 우선순위:
