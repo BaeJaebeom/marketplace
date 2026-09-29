@@ -19,15 +19,17 @@ description: 현재 세션의 작업 내용을 MD 파일로 저장하여 다음 
 
 ### 1. 정보 수집
 
-다음 명령으로 변경 사항을 파악한다:
+현재 디렉토리(프로젝트 루트)에서 아래 명령을 **한 줄 그대로** 실행해 변경 사항을 파악한다.
+루트가 Git 저장소면 루트 기준으로, 아니면 하위 1계층의 Git 저장소를 각각 조회한다 (모노레포 루트가 저장소가 아닌 경우 대응).
 
 ```bash
-git status
-git diff --stat
-git branch --show-current
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then echo "=== . ($(git branch --show-current))"; git status --short; git diff --stat; else for dir in */; do [ -d "$dir/.git" ] || continue; changes=$(git -C "$dir" status --short | grep -vE '[ /]\.DS_Store$|^\?\? \.idea/$'); [ -n "$changes" ] || continue; echo "=== ${dir%/} ($(git -C "$dir" branch --show-current))"; echo "$changes"; git -C "$dir" diff --stat; done; fi
 ```
 
-변경된 파일 경로에서 **서브프로젝트 단위**로 그룹핑한다 (예: `cms-api/`, `cms-fe/` 등).
+- 출력의 `=== {프로젝트} ({브랜치})` 한 블록이 서브프로젝트 하나다. 변경이 없거나 `.DS_Store`·`.idea/`만 있는 저장소는 출력되지 않는다.
+- 루트가 단일 저장소인 경우에는 변경된 파일 경로에서 **서브프로젝트 단위**로 그룹핑한다 (예: `cms-api/`, `cms-fe/` 등).
+- 변경이 있어도 이번 세션 작업과 무관한 저장소(이전부터 남아 있던 변경 등)는 대화 맥락을 기준으로 제외한다.
+- 조회된 저장소가 하나도 없으면 git 정보 없이 대화 맥락만으로 작성한다.
 
 ### 2. 토픽명 자동 생성
 
@@ -52,11 +54,10 @@ git branch --show-current
 ## 메타 정보
 - 날짜: YYYY-MM-DD HH:mm
 - 프로젝트: {프로젝트 루트 경로}
-- 브랜치: {현재 브랜치}
 
 ## 변경된 프로젝트
-- {서브프로젝트1}
-- {서브프로젝트2}
+- {서브프로젝트1} (브랜치: {브랜치})
+- {서브프로젝트2} (브랜치: {브랜치})
 
 ## 작업 내용
 
